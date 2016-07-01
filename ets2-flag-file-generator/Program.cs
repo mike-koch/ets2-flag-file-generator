@@ -55,8 +55,7 @@ namespace Ets2FlagFileGenerator
 
         private static void Process(string flag, string friendlyFlagName, string truck, Direction direction, string outputDirectory, bool excludeDirectionlessFiles) {
             Console.WriteLine($"Processing flag {friendlyFlagName} for truck {truck}, on the {direction} side");
-
-            // /def/vehicle/truck/*/accessory/{flag_l|flag_r}/*.sii (TruckAccessorySii)
+            
             string truckAccessorySii = new TruckAccessorySii().GetTemplate(flag, friendlyFlagName, truck, direction);
             string materialFlagMat = new MaterialFlagMat().GetTemplate(flag);
             string vehicleUpgradeMat = new VehicleUpgradeMat().GetTemplate(flag);
