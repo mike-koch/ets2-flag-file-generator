@@ -47,8 +47,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\Direction.cs" />
+    <Compile Include="Templates\IMat.cs" />
     <Compile Include="Templates\ITemplate.cs" />
+    <Compile Include="Templates\MaterialFlagMat.cs" />
     <Compile Include="Templates\TruckAccessorySii.cs" />
+    <Compile Include="Templates\VehicleUpgradeMat.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
