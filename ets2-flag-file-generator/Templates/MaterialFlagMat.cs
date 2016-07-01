@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ets2_flag_file_generator.Templates
+﻿namespace Ets2FlagFileGenerator.Templates
 {
-    class MaterialFlagMat : IMat
+    internal class MaterialFlagMat : IMat
     {
         public string GetTemplate(string flagName) {
             const string template = @"material : ""ui""

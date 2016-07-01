@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ets2_flag_file_generator.Templates
+﻿namespace Ets2FlagFileGenerator.Templates
 {
-    class TruckAccessorySii : ITemplate
+    internal class TruckAccessorySii : ITemplate
     {
         /*
         Message format:
@@ -20,7 +14,7 @@ namespace ets2_flag_file_generator.Templates
             string friendlyFlagName,
             string truckName,
             Direction direction) {
-            string template = @"{{
+            var template = @"{{
 accessory_addon_patch_data : {0}.{1}.flag_{2}
 {{
 	name: ""{4}""

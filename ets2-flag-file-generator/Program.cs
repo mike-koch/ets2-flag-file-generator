@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Configuration.Internal;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ets2_flag_file_generator.Templates;
+using Ets2FlagFileGenerator.Templates;
 
-namespace ets2_flag_file_generator
+namespace Ets2FlagFileGenerator
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             string outputDirectory = ConfigurationManager.AppSettings["SaveLocation"];
             List<string> flags = GetFlags();
@@ -29,7 +25,7 @@ namespace ets2_flag_file_generator
 
             // For each flag, go through each truck and build the necessary files, and save them in the correct format. Once for left flag, a second time for right flag.
             // ReSharper disable once LoopCanBePartlyConvertedToQuery
-            for (int i = 0; i < flags.Count; i++) {
+            for (var i = 0; i < flags.Count; i++) {
                 foreach (string truck in trucks) {
                     Process(flags[i], friendlyFlagNames[i], truck, Direction.Left, outputDirectory, false);
                     Process(flags[i], friendlyFlagNames[i], truck, Direction.Right, outputDirectory, true);
