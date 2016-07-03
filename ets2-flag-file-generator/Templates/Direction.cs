@@ -3,6 +3,7 @@
     internal enum Direction
     {
         Left = 'l',
-        Right = 'r'
+        Right = 'r',
+        Both = 'b'
     }
 }

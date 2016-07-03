@@ -4,31 +4,33 @@
     {
         /*
         Message format:
-        0 - Flag name (without flag_)
-        1 - Truck name
-        2 - l or r
-        3 - left or right
-        4 - Friendly flag name
+        0 - Flag Id
+        1 - Truck Id
+        2 - Direction
+        3 - Display Name
+        4 - UI TextureName
+        5 - Direction Display Name
         */
-        public string GetTemplate(string flagName,
-            string friendlyFlagName,
+        public string GetTemplate(string flagId,
+            string displayName,
             string truckName,
-            Direction direction) {
+            Direction direction,
+            string uiTextureName) {
             var template = @"{{
 accessory_addon_patch_data : {0}.{1}.flag_{2}
 {{
-	name: ""{4}""
+	name: ""{3}""
 
 	price: 10
 
-	icon: ""flag/flag_{0}""
+	icon: ""flag/{4}""
 
 
-	exterior_model: ""/vehicle/truck/upgrade/flag/flag_{3}.pmd""
+	exterior_model: ""/vehicle/truck/upgrade/flag/flag_{5}.pmd""
 
-	interior_model: ""/vehicle/truck/upgrade/flag/flag_{3}.pmd""
+	interior_model: ""/vehicle/truck/upgrade/flag/flag_{5}.pmd""
 
-	coll: ""/vehicle/truck/upgrade/flag/flag_{3}.pmc""
+	coll: ""/vehicle/truck/upgrade/flag/flag_{5}.pmc""
 
 	data: .patch.phys_data
 }}
@@ -48,7 +50,7 @@ physics_patch_data : .patch.phys_data
 }}
 }}";
 
-            return string.Format(template, flagName, truckName, (char)direction, direction.ToString().ToLower(), friendlyFlagName);
+            return string.Format(template, flagId, truckName, (char)direction, displayName, uiTextureName, direction.ToString().ToLower());
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Ets2FlagFileGenerator.Templates
 {
     internal interface IMat {
-        string GetTemplate(string flagName);
+        string GetTemplate(string uiTextureName);
     }
 }
