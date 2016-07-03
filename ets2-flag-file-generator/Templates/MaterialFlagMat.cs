@@ -6,7 +6,6 @@
             const string template = @"material : ""ui""
 {{
 	texture: ""{0}.tobj""
-
 	texture_name: ""texture""
 }}";
 

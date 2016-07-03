@@ -6,7 +6,6 @@
             const string template = @"material : ""eut2.dif.shadow""
 {{
 	texture: ""{0}.tobj""
-
 	texture_name: ""texture_base""
 }}";
 

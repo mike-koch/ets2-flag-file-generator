@@ -16,22 +16,17 @@
             string truckName,
             Direction direction,
             string uiTextureName) {
-            var template = @"{{
+            var template = @"SiiNunit
+{{
 accessory_addon_patch_data : {0}.{1}.flag_{2}
 {{
 	name: ""{3}""
-
 	price: 10
-
 	icon: ""flag/{4}""
 
-
 	exterior_model: ""/vehicle/truck/upgrade/flag/flag_{5}.pmd""
-
 	interior_model: ""/vehicle/truck/upgrade/flag/flag_{5}.pmd""
-
 	coll: ""/vehicle/truck/upgrade/flag/flag_{5}.pmc""
-
 	data: .patch.phys_data
 }}
 physics_patch_data : .patch.phys_data
