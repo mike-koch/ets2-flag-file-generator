@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -97,7 +98,16 @@ namespace Ets2FlagFileGenerator
 
             Processor.Process(truckIds, flags, outputDirectory);
 
-            MessageBox.Show("Files successfully generated! //TODO more information", "Files successfully generated",
+            const string successMessage = @"Files successfully generated! Some additional instructions:
+
+1. Your DDS files will need to be manually copied over to the output directory.
+2. TOBJ files currently cannot be generated.                                   
+   To solve this, download and/or open ETS2 Studio, and use the TOBJ editor.   
+   You will need a TOBJ for:                                                   
+      - \material\ui\accessory\flag\{UI Texture Name}.dds                            
+      - \vehicle\truck\upgrade\flag\{Texture Name}.dds";
+
+            MessageBox.Show(successMessage, "Files Successfully Generated",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -113,6 +123,18 @@ namespace Ets2FlagFileGenerator
             MessageBox.Show(message,
                 "Cannot build files", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             return false;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e) {
+            string[] modTrucks = ConfigurationManager.AppSettings["TruckIds"].Split('|');
+
+            if (modTrucks[0].Trim() == string.Empty) {
+                return;
+            }
+
+            foreach (string truck in modTrucks) {
+                TruckIdBox.Items.Add(truck);
+            }
         }
     }
 }

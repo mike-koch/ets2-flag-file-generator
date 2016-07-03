@@ -120,8 +120,8 @@
   <data name="StepTwoSubtext.Text" xml:space="preserve">
     <value>Flag ID: A unique ID that represents your flag(s), for both the right and left side.
 Display Name: The name displayed when scrolling through flags
-Texture Filename (L/R): The .dds file that contains the texture of the flag, including the file extension. "L" is for the left side, "R" for the right side.
-UI Texture Filename: The .dds file that contains the image displayed on the left-side when scrolling through flags, including the file extension.</value>
+Texture Filename (L/R): The .dds file that contains the texture of the flag, NOT including the file extension. "L" is for the left side, "R" for the right side.
+UI Texture Filename: The .dds file that contains the image displayed on the left-side when scrolling through flags, NOT including the file extension.</value>
   </data>
   <metadata name="FlagId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

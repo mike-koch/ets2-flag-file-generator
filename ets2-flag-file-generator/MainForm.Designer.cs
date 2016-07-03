@@ -112,7 +112,7 @@
             this.StepTwoSubtext.AutoSize = true;
             this.StepTwoSubtext.Location = new System.Drawing.Point(17, 200);
             this.StepTwoSubtext.Name = "StepTwoSubtext";
-            this.StepTwoSubtext.Size = new System.Drawing.Size(686, 52);
+            this.StepTwoSubtext.Size = new System.Drawing.Size(712, 52);
             this.StepTwoSubtext.TabIndex = 6;
             this.StepTwoSubtext.Text = resources.GetString("StepTwoSubtext.Text");
             // 
@@ -172,7 +172,7 @@
             // 
             this.BrowseButton.Location = new System.Drawing.Point(502, 469);
             this.BrowseButton.Name = "BrowseButton";
-            this.BrowseButton.Size = new System.Drawing.Size(83, 23);
+            this.BrowseButton.Size = new System.Drawing.Size(83, 20);
             this.BrowseButton.TabIndex = 12;
             this.BrowseButton.Text = "Browse...";
             this.BrowseButton.UseVisualStyleBackColor = true;
@@ -212,7 +212,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 612);
+            this.ClientSize = new System.Drawing.Size(744, 612);
             this.Controls.Add(this.BrowseButton);
             this.Controls.Add(this.ChosenFolderTextbox);
             this.Controls.Add(this.StepThreeSubtext);
@@ -228,6 +228,7 @@
             this.Controls.Add(this.StepOneLabel);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.FlagsDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
