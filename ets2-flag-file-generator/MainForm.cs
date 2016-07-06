@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Ets2FlagFileGenerator.Templates;
+using log4net;
 
 namespace Ets2FlagFileGenerator
 {
     public partial class MainForm : Form
     {
+        public static readonly ILog Logger = LogManager.GetLogger(typeof(Processor));
+
         public MainForm()
         {
+            // Initialize log4net.
+            log4net.Config.XmlConfigurator.Configure();
             InitializeComponent();
         }
 
@@ -25,6 +25,7 @@ namespace Ets2FlagFileGenerator
             var datagridview = sender as DataGridView;
 
             if (datagridview == null) {
+                Logger.Error("The sender was null, but shouldn't have been.");
                 throw new InvalidOperationException("The sender was null, but shouldn't have been.");
             }
 
@@ -49,14 +50,16 @@ namespace Ets2FlagFileGenerator
             }
 
             ChosenFolderTextbox.Text = browserDialog.SelectedPath;
+            Logger.Debug($"Set output directory to '{browserDialog.SelectedPath}'");
         }
 
         private void TruckIdAdd_Click(object sender, EventArgs e) {
             var addTruckDialog = new AddTruckIdForm(this);
-            DialogResult result = addTruckDialog.ShowDialog();
+            addTruckDialog.ShowDialog();
         }
 
         public void AddTruckIdToList(string truckId) {
+            Logger.Debug($"Added '{truckId}' to truck list");
             TruckIdBox.Items.Add(truckId);
         }
 
@@ -97,15 +100,10 @@ namespace Ets2FlagFileGenerator
             }
 
             Processor.Process(truckIds, flags, outputDirectory);
+            Logger.Info("Files generated!");
 
-            const string successMessage = @"Files successfully generated! Some additional instructions:
 
-1. Your DDS files will need to be manually copied over to the output directory.
-2. TOBJ files currently cannot be generated.                                   
-   To solve this, download and/or open ETS2 Studio, and use the TOBJ editor.   
-   You will need a TOBJ for:                                                   
-      - \material\ui\accessory\flag\{UI Texture Name}.dds                            
-      - \vehicle\truck\upgrade\flag\{Texture Name}.dds";
+            const string successMessage = @"Files successfully generated! Your DDS files will need to be manually copied over to the output directory.";
 
             MessageBox.Show(successMessage, "Files Successfully Generated",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -133,6 +131,7 @@ namespace Ets2FlagFileGenerator
             }
 
             foreach (string truck in modTrucks) {
+                Logger.Debug($"Added mod truck {truck} from Ets2FlagFileGenerator.exe.config");
                 TruckIdBox.Items.Add(truck);
             }
         }

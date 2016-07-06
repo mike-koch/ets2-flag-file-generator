@@ -37,16 +37,16 @@
             this.StepTwoLabel = new System.Windows.Forms.Label();
             this.StepTwoSubtext = new System.Windows.Forms.Label();
             this.FlagsDataGrid = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.StepThreeText = new System.Windows.Forms.Label();
-            this.StepThreeSubtext = new System.Windows.Forms.Label();
-            this.ChosenFolderTextbox = new System.Windows.Forms.TextBox();
-            this.BrowseButton = new System.Windows.Forms.Button();
             this.FlagId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DisplayName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TextureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TextureNameRightSide = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UiTextureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenerateButton = new System.Windows.Forms.Button();
+            this.StepThreeText = new System.Windows.Forms.Label();
+            this.StepThreeSubtext = new System.Windows.Forms.Label();
+            this.ChosenFolderTextbox = new System.Windows.Forms.TextBox();
+            this.BrowseButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.FlagsDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,15 +131,45 @@
             this.FlagsDataGrid.TabIndex = 7;
             this.FlagsDataGrid.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
             // 
-            // button1
+            // FlagId
             // 
-            this.button1.Location = new System.Drawing.Point(17, 553);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 43);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Generate!";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.FlagId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FlagId.HeaderText = "Flag ID";
+            this.FlagId.Name = "FlagId";
+            // 
+            // DisplayName
+            // 
+            this.DisplayName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DisplayName.HeaderText = "Display Name";
+            this.DisplayName.Name = "DisplayName";
+            // 
+            // TextureName
+            // 
+            this.TextureName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TextureName.HeaderText = "Texture Filename (L)";
+            this.TextureName.Name = "TextureName";
+            // 
+            // TextureNameRightSide
+            // 
+            this.TextureNameRightSide.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TextureNameRightSide.HeaderText = "Texture Filename (R)";
+            this.TextureNameRightSide.Name = "TextureNameRightSide";
+            // 
+            // UiTextureName
+            // 
+            this.UiTextureName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.UiTextureName.HeaderText = "UI Texture Filename";
+            this.UiTextureName.Name = "UiTextureName";
+            // 
+            // GenerateButton
+            // 
+            this.GenerateButton.Location = new System.Drawing.Point(17, 553);
+            this.GenerateButton.Name = "GenerateButton";
+            this.GenerateButton.Size = new System.Drawing.Size(103, 43);
+            this.GenerateButton.TabIndex = 8;
+            this.GenerateButton.Text = "Generate!";
+            this.GenerateButton.UseVisualStyleBackColor = true;
+            this.GenerateButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // StepThreeText
             // 
@@ -178,36 +208,6 @@
             this.BrowseButton.UseVisualStyleBackColor = true;
             this.BrowseButton.Click += new System.EventHandler(this.BrowseButton_Click);
             // 
-            // FlagId
-            // 
-            this.FlagId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FlagId.HeaderText = "Flag ID";
-            this.FlagId.Name = "FlagId";
-            // 
-            // DisplayName
-            // 
-            this.DisplayName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DisplayName.HeaderText = "Display Name";
-            this.DisplayName.Name = "DisplayName";
-            // 
-            // TextureName
-            // 
-            this.TextureName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TextureName.HeaderText = "Texture Filename (L)";
-            this.TextureName.Name = "TextureName";
-            // 
-            // TextureNameRightSide
-            // 
-            this.TextureNameRightSide.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TextureNameRightSide.HeaderText = "Texture Filename (R)";
-            this.TextureNameRightSide.Name = "TextureNameRightSide";
-            // 
-            // UiTextureName
-            // 
-            this.UiTextureName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.UiTextureName.HeaderText = "UI Texture Filename";
-            this.UiTextureName.Name = "UiTextureName";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,7 +217,7 @@
             this.Controls.Add(this.ChosenFolderTextbox);
             this.Controls.Add(this.StepThreeSubtext);
             this.Controls.Add(this.StepThreeText);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.GenerateButton);
             this.Controls.Add(this.FlagsDataGrid);
             this.Controls.Add(this.StepTwoSubtext);
             this.Controls.Add(this.StepTwoLabel);
@@ -245,7 +245,7 @@
         private System.Windows.Forms.Label StepTwoLabel;
         private System.Windows.Forms.Label StepTwoSubtext;
         private System.Windows.Forms.DataGridView FlagsDataGrid;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button GenerateButton;
         private System.Windows.Forms.Label StepThreeText;
         private System.Windows.Forms.Label StepThreeSubtext;
         private System.Windows.Forms.TextBox ChosenFolderTextbox;

@@ -4,18 +4,21 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Ets2FlagFileGenerator.Templates;
+using log4net;
+using log4net.Core;
+using log4net.Repository.Hierarchy;
 using ModsStudioLib.Files;
 
 namespace Ets2FlagFileGenerator
 {
     internal class Processor
     {
+        public static readonly ILog Logger = LogManager.GetLogger(typeof(Processor));
+
         [STAThread]
         static void Main()
         {
-            Console.WriteLine("Flag file generator running... any log information will be shown here.");
-            Console.WriteLine("Use the UI to continue.");
-            Console.WriteLine("======================================================================");
+            Logger.Info("Ets2FlagFileGenerator - ready");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
@@ -37,7 +40,7 @@ namespace Ets2FlagFileGenerator
         }
 
         private static void Process(string id, string textureName, string uiTextureName, string friendlyFlagName, string truck, Direction direction, string outputDirectory, bool excludeDirectionlessFiles) {
-            Console.WriteLine($"Processing flag {friendlyFlagName} for truck {truck}, on the {direction} side");
+            Logger.Info($"Processing flag {friendlyFlagName} for truck {truck}, on the {direction} side");
 
             string truckAccessorySii = new TruckAccessorySii().GetTemplate(id, friendlyFlagName, truck, direction,
                 uiTextureName, textureName);
