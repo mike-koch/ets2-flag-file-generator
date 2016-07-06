@@ -88,7 +88,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AddTruckIdForm";
+            this.Text = "Add Truck ID";
             this.ResumeLayout(false);
             this.PerformLayout();
 

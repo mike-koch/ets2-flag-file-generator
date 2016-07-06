@@ -226,8 +226,9 @@
             this.Controls.Add(this.TruckIdBox);
             this.Controls.Add(this.StepOneSubtext);
             this.Controls.Add(this.StepOneLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "ETS2 Flag File Generator";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.FlagsDataGrid)).EndInit();
             this.ResumeLayout(false);
