@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Ets2FlagFileGenerator.Templates;
+using ModsStudioLib.Files;
 
 namespace Ets2FlagFileGenerator
 {
@@ -13,6 +13,9 @@ namespace Ets2FlagFileGenerator
         [STAThread]
         static void Main()
         {
+            Console.WriteLine("Flag file generator running... any log information will be shown here.");
+            Console.WriteLine("Use the UI to continue.");
+            Console.WriteLine("======================================================================");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
@@ -37,10 +40,12 @@ namespace Ets2FlagFileGenerator
             Console.WriteLine($"Processing flag {friendlyFlagName} for truck {truck}, on the {direction} side");
 
             string truckAccessorySii = new TruckAccessorySii().GetTemplate(id, friendlyFlagName, truck, direction,
-                uiTextureName);
+                uiTextureName, textureName);
             string materialFlagMat = new MaterialFlagMat().GetTemplate(uiTextureName);
             string vehicleUpgradeMat = new VehicleUpgradeMat().GetTemplate(textureName);
             string outputFile;
+            Tobj tobjFile;
+            string tobjDirectory;
 
             if (excludeDirectionlessFiles) {
                 // material\ui\accessory\flag holds the materialFlagMat file (where the UI texture lives)
@@ -48,6 +53,12 @@ namespace Ets2FlagFileGenerator
                 Directory.CreateDirectory(flagMatDirectory);
                 outputFile = BuildOutputFilePath(flagMatDirectory, uiTextureName, "mat");
                 File.WriteAllText(outputFile, materialFlagMat);
+
+                // This also holds a TOBJ for the texture
+                tobjDirectory = outputDirectory + @"\material\ui\accessory\flag";
+                tobjFile = TobjFile.Load(@"sample.tobj");
+                tobjFile.TexturePath = $@"/material/ui/accessory/flag/{uiTextureName}.dds";
+                tobjFile.Save(BuildOutputFilePath(tobjDirectory, uiTextureName, "tobj"));
             }
 
             // vehicle\truck\upgrade\flag holds the vehicleUpgradeMat (where the actual flag texture lives)
@@ -55,6 +66,12 @@ namespace Ets2FlagFileGenerator
             Directory.CreateDirectory(upgradeMatDirectory);
             outputFile = BuildOutputFilePath(upgradeMatDirectory, textureName, "mat");
             File.WriteAllText(outputFile, vehicleUpgradeMat);
+
+            // This also holds a TOBJ for the texture
+            tobjDirectory = outputDirectory + @"\vehicle\truck\upgrade\flag";
+            tobjFile = TobjFile.Load(@"sample.tobj");
+            tobjFile.TexturePath = $@"/vehicle/truck/upgrade/flag/{textureName}.dds";
+            tobjFile.Save(BuildOutputFilePath(tobjDirectory, textureName, "tobj"));
 
             // def\vehicle\truck\{truck_name}\accessory\{flag_l|flag_r} holds the SII file
             string accessorySiiDirectory = outputDirectory +

@@ -5,6 +5,7 @@
             string friendlyFlagName,
             string truckName,
             Direction direction,
-            string uiTextureName);
+            string uiTextureName,
+            string textureName);
     }
 }

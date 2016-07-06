@@ -10,13 +10,15 @@
         3 - Display Name
         4 - UI TextureName
         5 - Direction Display Name
+        6 - Texture Name (L|R)
         */
         public string GetTemplate(string flagId,
             string displayName,
             string truckName,
             Direction direction,
-            string uiTextureName) {
-            var template = @"SiiNunit
+            string uiTextureName,
+            string textureName) {
+            const string template = @"SiiNunit
 {{
 accessory_addon_patch_data : {0}.{1}.flag_{2}
 {{
@@ -31,7 +33,7 @@ accessory_addon_patch_data : {0}.{1}.flag_{2}
 }}
 physics_patch_data : .patch.phys_data
 {{
-	material: ""/vehicle/truck/upgrade/flag/{0}.mat""
+	material: ""/vehicle/truck/upgrade/flag/{6}.mat""
 	area_density: 0.1
 	linear_stiffness: 0.9
 	drag_coefficient: 3.0
@@ -45,7 +47,8 @@ physics_patch_data : .patch.phys_data
 }}
 }}";
 
-            return string.Format(template, flagId, truckName, (char)direction, displayName, uiTextureName, direction.ToString().ToLower());
+            return string.Format(template, flagId, truckName, (char)direction, 
+                displayName, uiTextureName, direction.ToString().ToLower(), textureName);
         }
     }
 }
